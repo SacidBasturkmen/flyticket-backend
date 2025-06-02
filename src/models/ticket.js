@@ -1,4 +1,3 @@
-// models/ticket.js
 module.exports = (sequelize, DataTypes) => {
   const Ticket = sequelize.define(
     "Ticket",
@@ -34,7 +33,7 @@ module.exports = (sequelize, DataTypes) => {
       },
       seat_number: {
         type: DataTypes.STRING(10),
-        allowNull: true, // İstenirse boş kalabilir
+        allowNull: true,
       },
     },
     {

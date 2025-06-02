@@ -1,4 +1,3 @@
-// middleware/authMiddleware.js
 const { Admin } = require("../models");
 const asyncHandler = require("express-async-handler");
 const { verifyToken } = require("./jwt");
@@ -19,7 +18,6 @@ const protect = asyncHandler(async (req, res, next) => {
     throw new Error("Geçersiz veya süresi dolmuş token");
   }
 
-  // Artık decoded içinde { username: "abc", iat:…, exp:… } olacak
   const admin = await Admin.findOne({
     where: { username: decoded.username },
     attributes: ["username"],
@@ -30,7 +28,7 @@ const protect = asyncHandler(async (req, res, next) => {
     throw new Error("Yetkisiz erişim");
   }
 
-  req.user = admin; // req.user.username şeklinde erişebilirsin
+  req.user = admin;
   next();
 });
 

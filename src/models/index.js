@@ -1,8 +1,6 @@
-// models/index.js
-require("dotenv").config(); // <— Ortam değişkenlerini yükler
+require("dotenv").config();
 const { Sequelize, DataTypes } = require("sequelize");
 
-// .env içindeki değerleri kullanıyoruz:
 const sequelize = new Sequelize(
   process.env.DB_NAME,
   process.env.DB_USER,
@@ -20,7 +18,6 @@ const Flight = require("./flight")(sequelize, DataTypes);
 const Ticket = require("./ticket")(sequelize, DataTypes);
 const Admin = require("./admin")(sequelize, DataTypes);
 
-// İlişkiler
 City.hasMany(Flight, {
   foreignKey: "from_city_id",
   as: "departingFlights",

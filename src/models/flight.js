@@ -1,4 +1,3 @@
-// models/flight.js
 module.exports = (sequelize, DataTypes) => {
   const Flight = sequelize.define(
     "Flight",
@@ -51,11 +50,6 @@ module.exports = (sequelize, DataTypes) => {
       timestamps: false,
       underscored: true,
 
-      // Aşağıda, “aynı şehirden aynı saatte kalkan” ve
-      // “aynı şehre aynı saatte inen” kurallarını
-      // basitçe yakalamak için unique constraint ekliyoruz.
-      // Burada “aynı saat” ifadesini, tam tarih-saat eşleşmesi
-      // (yani minutes/seconds da aynı) olarak ele aldık.
       indexes: [
         {
           unique: true,
